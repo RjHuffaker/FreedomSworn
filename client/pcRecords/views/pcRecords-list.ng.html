@@ -1,0 +1,16 @@
+<form>
+  <label>Name</label>
+  <input ng-model="newPcRecord.name">
+  <label>Description</label>
+  <input ng-model="newPcRecord.description">
+  <button ng-click="pcRecordsList.push(newPcRecord)">Add</button>
+  <button ng-click="removeAll()">Remove All</button>
+</form>
+
+<ul>
+  <li ng-repeat="pcRecord in pcRecordsList">
+    <a href="/pcRecords/{{pcRecord._id}}">{{pcRecord.name}}</a>
+    <p>{{pcRecord.description}}</p>
+    <button ng-click="remove(pcRecord)">X</button>
+  </li>
+</ul>
