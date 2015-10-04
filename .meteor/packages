@@ -10,3 +10,5 @@ angular
 angularui:angular-ui-router
 accounts-password
 insecure
+twbs:bootstrap
+less
