@@ -1,0 +1,17 @@
+<form>
+	<label>Scene Name</label>
+	<input ng-model="newScene.name">
+	<br/>
+	<label>Scene Description</label>
+	<input ng-model="newScene.description">
+	<br/>
+	<button ng-click="addScene()">Add Scene</button>
+</form>
+
+<ul>
+	<li ng-repeat="scene in scenesList">
+		<a href="" ng-click="readScene(scene)">{{scene.name}}</a>
+		<p>{{scene.description}}</p>
+		<button ng-click="deleteScene(scene)">X</button>
+	</li>
+</ul>

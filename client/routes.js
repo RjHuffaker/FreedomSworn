@@ -5,17 +5,12 @@
       $locationProvider.html5Mode(true);
 
       $stateProvider
-        .state('pcRecords', {
-          url: '/pcRecords',
-          templateUrl: 'client/pcRecords/views/pcRecords-list.ng.html',
-          controller: 'PcRecordsListCtrl'
-        })
-        .state('pcRecordDetails', {
-          url: '/pcRecords/:pcRecordId',
-          templateUrl: 'client/pcRecords/views/pcRecord-details.ng.html',
-          controller: 'PcRecordDetailsCtrl'
+        .state('home', {
+          url: '/',
+          templateUrl: 'client/views/home.ng.html',
+          controller: 'HomeCtrl'
         });
 
-      $urlRouterProvider.otherwise("/pcRecords");
+      $urlRouterProvider.otherwise('/');
       
     }]);

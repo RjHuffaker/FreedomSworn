@@ -1,0 +1,16 @@
+<h1>
+	<span class="md-title">FreedomSworn</span>
+	<a href="" ng-click="browsePcs()">PC Records</a> - <a href="" ng-click="browseScenes()">Scenes</a>
+	<span flex></span>
+	<div class="navbar-right navbar-text">
+		Right
+	</div>
+</h1>
+
+<div ng-if="currentMode === 'pcDetails'" pc-details></div>
+
+<div ng-if="currentMode === 'pcList'" pc-list></div>
+
+<div ng-if="currentMode === 'sceneDetails'" scene-details></div>
+
+<div ng-if="currentMode === 'sceneList'" scene-list></div>

@@ -1,0 +1,11 @@
+Scene Name: <input ng-model="scene.name">
+<br />
+Scene Description: <input ng-model="scene.description">
+<br />
+<canvas drawing-pad scene-id="scene._id">
+</canvas>
+<br />
+<button ng-click="clearSketchPad()">Clear</button>
+<button ng-click="editScene(scene)">Save</button>
+<button ng-click="readScene(scene)">Reset form</button>
+<button ng-click="browseScenes()">Cancel</button>

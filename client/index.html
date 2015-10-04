@@ -1,14 +1,9 @@
 <head>
-  <base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="/">
 </head>
-<body>
-
-<div ng-app="freedomsworn">
-  <h1>
-    <a href="/pcRecords">Home</a>
-  </h1>
-  
-  <div ui-view></div>
-</div>
-
+<body layout="column">
+	<div ng-app="freedomsworn">
+		<div ui-view flex-gt-sm layout-gt-sm="column"></div>
+	</div>
 </body>

@@ -1,0 +1,17 @@
+<form>
+  <label>Pc Name</label>
+  <input ng-model="newPcRecord.name">
+  <br/>
+  <label>Pc Description</label>
+  <input ng-model="newPcRecord.description">
+  <br/>
+  <button ng-click="addPc()">Add Pc</button>
+</form>
+
+<ul>
+  <li ng-repeat="pcRecord in pcRecordsList">
+    <a href="" ng-click="readPc(pcRecord)">{{pcRecord.name}}</a>
+    <p>{{pcRecord.description}}</p>
+    <button ng-click="deletePc(pcRecord)">X</button>
+  </li>
+</ul>
