@@ -1,0 +1,143 @@
+<div class="card-header fill-parent">
+	<div class="text-9">
+		<input ng-if="!panel.locked" type="text"
+			style="font-weight: bold; margin-top: -1px;"
+			class="card-input text-bold fill-width"
+			ng-model="card.name" stop-event>
+		<strong ng-if="panel.locked">
+			{{card.name}}
+			<span class="text-capitalize" ng-if="!card.name">
+				[{{card.cardType}} name]
+			</span>
+		</strong>
+	</div>
+	<hr class="black-line">
+	<div ng-if="card.cardType !== 'Item' && card.cardType !== 'Aspect'">
+		<span ng-if="panel.locked" class="text-9">
+			<span>
+				{{card.aspect.name}}
+			</span>
+			<span ng-if="!card.aspect">
+				[Aspect]
+			</span>
+		</span>
+		<div ng-if="!panel.locked" class="dropdown" dropdown stop-event on-toggle="toggled(open)">
+			<a id="cardDropdown" class="dropdown-toggle text-9" dropdown-toggle ng-click="dropdown" aria-expanded="true">
+				<span class="text-capitalize">
+					{{card.aspect.name}}
+				</span>
+				<span ng-if="!card.aspect">
+					[Aspect]
+				</span>
+			</a>
+			<div class="dropdown-menu" style="width: 14em; left: -4em;"
+				aria-labelledby="cardDropdown">
+				<div class="text-8">
+					<ul class="col-xs-6">
+						<li role="presentation" class="dropdown-header">Archetype</li>
+						<li role="presentation" ng-repeat="archetype in Bakery.resource.archetypeList track by $index"><label>
+							<input type="radio" ng-checked="card.aspect.name === archetype.name"
+								ng-click="BuilderHub.changeAspect(card, archetype); featureCardForm.$setDirty();">
+							{{archetype.name}}
+						</label></li>
+					</ul>
+					<ul class="col-xs-6">
+						<li role="presentation" class="dropdown-header">Allegiance</li>
+						<li role="presentation" ng-repeat="allegiance in Bakery.resource.allegianceList" ng-if="allegiance.name !== 'Unaligned'"><label>
+							<input type="radio" ng-checked="card.aspect.name === allegiance.name"
+								ng-click="BuilderHub.changeAspect(card, allegiance); featureCardForm.$setDirty();">
+							{{allegiance.name}}
+						</label></li>
+					</ul>
+				</div>
+				<ul class="text-8">
+					<li role="presentation" class="col-xs-12 dropdown-header">Race</li>
+					<li role="presentation" class="col-xs-6" style="padding: 0;"
+						ng-repeat="race in Bakery.resource.raceList" ng-if="race.name !== 'Weolda'">
+						<label>
+							<input type="radio" ng-checked="card.aspect.name === race.name"
+								ng-click="BuilderHub.changeAspect(card, race); featureCardForm.$setDirty();">
+							{{race.name}}
+						</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-if="card.cardType === 'Item'" class="title-block text-8">
+		<div class="title-block" ng-if="card.itemSlot === 'One-handed'
+				|| card.itemSlot === 'Two-handed'
+				|| card.itemSlot === 'One-handed or Paired'
+				|| card.itemSlot === 'One-handed or Two-handed'">
+			<span ng-if="panel.locked">
+				{{card.itemType}}
+			</span>
+			<span ng-if="panel.locked && !card.itemType">
+				[Item Type]
+			</span>
+			<div ng-if="!panel.locked" class="dropdown" dropdown stop-event on-toggle="toggled(open)">
+				<a id="cardDropdown" class="dropdown-toggle" dropdown-toggle
+					ng-click="dropdown" aria-expanded="true">
+					<span>
+						{{card.itemType}}
+					</span>
+					<span ng-if="!card.itemType">
+						[Item Type]
+					</span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="cardDropdown">
+					<ul>
+						<li role="presentation" class="dropdown-header">Weapon/Implement Type</li>
+						<li role="presentation" ng-repeat="itemType in $parent.dataSRVC.itemTypes"><label>
+							<input type="radio" ng-model="card.itemType" value="{{itemType}}">
+							{{itemType}}
+						</label></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="title-block" ng-if="card.itemSlot !== 'One-handed'
+				&& card.itemSlot !== 'Two-handed'
+				&& card.itemSlot !== 'One-handed or Paired'
+				&& card.itemSlot !== 'One-handed or Two-handed'">
+			<span>
+				{{card.itemSlot}}
+			</span>
+			<span ng-if="!card.itemSlot">
+				[Item Type]
+			</span>
+		</div>
+	</div>
+	
+	<div ng-if="card.cardType === 'Aspect'" class="title-block text-8">
+		<div class="title-block">
+			<span ng-if="panel.locked">
+				{{card.aspectType}}
+			</span>
+			<span ng-if="panel.locked && !card.aspectType">
+				[Aspect Type]
+			</span>
+			<div ng-if="!panel.locked" class="dropdown" dropdown stop-event on-toggle="toggled(open)">
+				<a id="cardDropdown" class="dropdown-toggle" dropdown-toggle
+					ng-click="dropdown" aria-expanded="true">
+					<span>
+						{{card.aspectType}}
+					</span>
+					<span ng-if="!card.aspectType">
+						[Aspect Type]
+					</span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="cardDropdown">
+					<ul>
+						<li role="presentation" class="dropdown-header">Aspect Type</li>
+						<li role="presentation" ng-repeat="aspectType in $parent.dataSRVC.aspectTypes"><label>
+							<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
+							{{aspectType}}
+						</label></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

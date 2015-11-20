@@ -1,16 +1,17 @@
-<h1>
-	<span class="md-title">FreedomSworn</span>
-	<a href="" ng-click="browsePcs()">PC Records</a> - <a href="" ng-click="browseScenes()">Scenes</a>
-	<span flex></span>
-	<div class="navbar-right navbar-text">
-		Right
+<div>
+	<h1>
+		Home Page
+	</h1>
+	
+	<div deck-stack ng-mouseleave="true">
+		<ul>
+			<li card-panel ng-repeat="panel in Bakery.resource.cardList" panel="panel"
+				ng-class="{'dragging': panel.dragging}"
+				ng-style="{'z-index': panel.z_coord, 'height': panel.y_dim+'em', 'width': panel.x_dim+'em'}"
+				ng-mousemove="true" ng-click="true">
+			</li>
+		</ul>
 	</div>
-</h1>
-
-<div ng-if="currentMode === 'pcDetails'" pc-details></div>
-
-<div ng-if="currentMode === 'pcList'" pc-list></div>
-
-<div ng-if="currentMode === 'sceneDetails'" scene-details></div>
-
-<div ng-if="currentMode === 'sceneList'" scene-list></div>
+	
+	
+</div>

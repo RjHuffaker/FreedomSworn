@@ -1,0 +1,45 @@
+<div ng-switch on="panel.panelType" class="fill-parent">
+	<div ng-switch-when="playerOptions" player-options class="fill-parent"></div>
+	<div ng-switch-when="builderOptions" builder-options class="fill-parent"></div>
+	<div ng-switch-when="narratorOptions" narrator-options class="fill-parent"></div>
+	
+	<div ng-switch-when="pcSummary" pc-summary class="fill-parent"></div>
+	<div ng-switch-when="pcOptions" pc-options class="fill-parent"></div>
+	
+	<div ng-switch-when="deckSummary" deck-summary class="fill-parent {{panel.deckType}}"></div>
+	<div ng-switch-when="deckOptions" deck-options class="fill-parent"></div>
+	
+	<div ng-switch-when="npcSummary" npc-summary class="fill-parent"></div>
+	<div ng-switch-when="npcOptions" npc-options class="fill-parent"></div>
+	
+	<div ng-switch-when="campaignSummary" campaign-summary class="fill-parent"></div>
+	<div ng-switch-when="campaignOptions" campaign-options class="fill-parent"></div>
+	
+	<div ng-switch-when="deckDemo" deck-demo class="fill-parent"></div>
+	
+	<div ng-switch-when="pc1" card-pc-1 class="fill-parent"></div>
+	<div ng-switch-when="pc2" card-pc-2 class="fill-parent"></div>
+	<div ng-switch-when="pc3" card-pc-3 class="fill-parent"></div>
+	
+	<div ng-switch-when="Aspect" feature-card
+		card="panel.aspectData" panel="panel"
+		class="card-aspect fill-parent"></div>
+	<div ng-switch-when="Trait" feature-card
+		card="panel.traitData" panel="panel"
+		class="card-trait fill-parent"></div>
+	<div ng-switch-when="Feat" feature-card
+		card="panel.featData" panel="panel"
+		class="card-feat fill-parent"></div>
+	<div ng-switch-when="Augment" feature-card
+		card="panel.augmentData" panel="panel"
+		class="card-augment fill-parent"></div>
+	<div ng-switch-when="Item" feature-card
+		card="panel.itemData" panel="panel"
+		class="card-item fill-parent"></div>
+	<div ng-switch-when="Origin" feature-card
+		card="panel.originData" panel="panel"
+		class="card-origin fill-parent"></div>
+	<div ng-switch-when="Note" feature-card
+		card="panel.noteData" panel="panel"
+		class="card-note fill-parent"></div>
+</div>

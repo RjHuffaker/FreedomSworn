@@ -1,0 +1,13 @@
+<ul>
+	<li ng-repeat="scene in sceneList">
+		<a href="" ng-click="readScene(scene)">{{scene.name}}</a>
+		<p>{{scene.description}}</p>
+		<button ng-click="deleteScene(scene)">X</button>
+	</li>
+</ul>
+
+<button class="btn btn-default" ng-click="readScene()">
+  Add Scene
+</button>
+
+<div ui-view="sceneDetails" autoscroll="false"></div>
