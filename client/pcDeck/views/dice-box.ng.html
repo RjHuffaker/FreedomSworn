@@ -1,0 +1,61 @@
+<div class="content-table">
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[0].image}}
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 0);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[1].image}}
+				ng-show="breadSrvc.deck.dicepool[1].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 1);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[2].image}}
+				ng-show="breadSrvc.deck.dicepool[2].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 2);"
+				class="dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[3].image}}
+				ng-show="breadSrvc.deck.dicepool[3].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 3);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[4].image}}
+				ng-show="breadSrvc.deck.dicepool[4].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 4);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[5].image}}
+				ng-show="breadSrvc.deck.dicepool[5].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 5);"
+				class="dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[6].image}}
+				ng-show="breadSrvc.deck.dicepool[6].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 6);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[7].image}}
+				ng-show="breadSrvc.deck.dicepool[7].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 7);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{breadSrvc.deck.dicepool[8].image}}
+				ng-show="breadSrvc.deck.dicepool[8].order > 0"
+				ng-click="abilityDice.chooseDie(breadSrvc.deck, 8);"
+				class="dice-box-image" />
+		</div>
+	</div>
+</div>
