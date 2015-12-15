@@ -1,4 +1,9 @@
-FeatureDecks = new Mongo.Collection("featureDecks");
+FeatureDecks = new Mongo.Collection("featureDecks", {
+  transform: function(doc){
+    
+    return doc;
+  }
+});
 
 FeatureDecks.allow({
 	insert: function(userId, featureDeck){

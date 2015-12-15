@@ -2,36 +2,36 @@ angular.module('freedomsworn')
 	.directive('pcDeckOptions', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'pc-deck-options.ng.html'
+			templateUrl: paths.pcDeck.views+'pc-deck-options.ng.html'
 		};
 	})
 	.directive('pcSummary', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'pc-summary.ng.html'
+			templateUrl: paths.pcDeck.views+'pc-summary.ng.html'
 		};
 	})
 	.directive('pcOptions', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'pc-options.ng.html'
+			templateUrl: paths.pcDeck.views+'pc-options.ng.html'
 		};
 	})
 	.directive('cardPc1', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'card-pc-1.ng.html'
+			templateUrl: paths.pcDeck.views+'card-pc-1.ng.html'
 		};
 	})
 	.directive('cardPc2', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'card-pc-2.ng.html'
+			templateUrl: paths.pcDeck.views+'card-pc-2.ng.html'
 		};
 	})
 	.directive('cardPc3', function(){
 		return {
 			restrict: 'A',
-			templateUrl: viewPaths.pcDeck+'card-pc-3.ng.html'
+			templateUrl: paths.pcDeck.views+'card-pc-3.ng.html'
 		};
 	});

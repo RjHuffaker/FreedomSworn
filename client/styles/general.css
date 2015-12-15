@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+}
+
+body {
+	padding-top: 60px;
+	height: 100%;
+}
+
+.defaultCursor{
+	cursor: default;
+}
+
+.login-register {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.login-register input, .login-register button {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}

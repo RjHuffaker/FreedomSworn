@@ -1,6 +1,37 @@
 <div>
 	New Feature Deck
-	<button ng-click="featureBread.add('Trait', 8);">Create Deck</button>
-	<br>
-	<input ng-model="deckSize">
+	<div>
+		<h4>Name</h4>
+		<input ng-model="newDeck.name">
+	</div>
+	
+	<div>
+		<h4>Deck Size</h4>
+		<div numpicker
+			numvalue="newDeck.deckSize"
+			numvaluemin="0"
+			numvaluemax="64"
+			numdelay="200"></div>
+	</div>
+	
+	<div class="btn-group" role="group">
+		<h4>Deck Type</h4>
+		<button class="btn btn-default dropdown-toggle form-control"
+			type="button" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">
+			{{newDeck.cardType}}
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" style="width: 100%; max-height: 1000%; overflow: auto">
+			<li ng-repeat="cardType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
+				<a href="" ng-click="setCardType(cardType)">
+				{{cardType}}
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div>
+		<button ng-click="addNewDeck(newDeck);">Create Deck</button>
+	</div>
+	
 </div>

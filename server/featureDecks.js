@@ -1,3 +1,3 @@
-Meteor.publish("featureDecks", function () {
-  return FeatureDecks.find({});
+Meteor.publish("featureDecks", function(params){
+  return FeatureDecks.find(params);
 });
