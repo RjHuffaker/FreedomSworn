@@ -1,0 +1,73 @@
+<div class="modal-overlay" ng-click="CoreVars.currentModal = '';" ng-show="CoreVars.currentModal"></div>
+
+<div class="card-modal"
+	ng-switch on="CoreVars.currentModal.modal_id"
+	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
+		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}">
+	
+	<div ng-switch-when="cardHeaderName">
+		<input type="text" ng-model="card.name" class="text-10" style="width: 100%;">
+	</div>
+	
+	<div ng-switch-when="cardHeaderAspect">
+		<ul class="text-8">
+			<li>Archetype</li>
+			<li ng-repeat="archetype in dataSrvc.archetypeList track by $index"><label>
+				<input type="radio" ng-checked="card.aspect.name === archetype.name"
+					ng-click="BuilderHub.changeAspect(card, archetype); featureCardForm.$setDirty();">
+				{{archetype.name}}
+			</label></li>
+			<li>Allegiance</li>
+			<li ng-repeat="allegiance in dataSrvc.allegianceList"
+				ng-if="allegiance.name !== 'Unaligned'"><label>
+				<input type="radio" ng-checked="card.aspect.name === allegiance.name"
+					ng-click="BuilderHub.changeAspect(card, allegiance); featureCardForm.$setDirty();">
+				{{allegiance.name}}
+			</label></li>
+			<li>Race</li>
+			<li ng-repeat="race in dataSrvc.raceList" ng-if="race.name !== 'Weolda'">
+				<label>
+					<input type="radio" ng-checked="card.aspect.name === race.name"
+						ng-click="BuilderHub.changeAspect(card, race); featureCardForm.$setDirty();">
+					{{race.name}}
+				</label>
+			</li>
+		</ul>
+	</div>
+	
+	<div ng-switch-when="cardHeaderItemType">
+		<ul>
+			<li>Weapon/Implement Type</li>
+			<li ng-repeat="itemType in dataSrvc.itemTypes"><label>
+				<input type="radio" ng-model="card.itemType" value="{{itemType}}">
+				{{itemType}}
+			</label></li>
+		</ul>
+	</div>
+	
+	<div ng-switch-when="cardHeaderAspectType">
+		<ul>
+			<li>Aspect Type</li>
+			<li ng-repeat="aspectType in $parent.dataSrvc.aspectTypes"><label>
+				<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
+				{{aspectType}}
+			</label></li>
+		</ul>
+	</div>
+	
+	<div ng-switch-when="cardFooterPrerequisites">
+		<ul class="text-8">
+			<li>Prerequisite</li>
+			<li><label>
+				<input type="radio" ng-model="card.prerequisite" value="">
+				None
+			</label></li>
+			<li ng-repeat="prerequisite in dataSrvc.prerequisites"><label>
+				<input type="radio" ng-model="card.prerequisite" value="{{prerequisite}}">
+				{{prerequisite}}
+			</label></li>
+		</ul>
+	</div>
+	
+	
+</div>

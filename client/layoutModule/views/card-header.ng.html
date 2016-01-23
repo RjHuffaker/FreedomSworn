@@ -1,0 +1,48 @@
+<div class="card-header fill-parent">
+	
+	<div card-modal-toggle modal-id="cardHeaderName">
+		<strong>
+			{{card.name}}
+		</strong>
+	</div>
+	
+	<hr class="black-line">
+	
+	<div ng-if="card.cardType !== 'Item' && card.cardType !== 'Aspect'">
+		<div card-modal-toggle modal-id="cardHeaderAspect">
+			<span class="text-capitalize">
+				{{card.aspect.name}}
+			</span>
+			<span ng-if="!card.aspect">
+				[Aspect]
+			</span>
+		</div>
+	</div>
+	
+	<div ng-if="card.cardType === 'Item'
+		&& (card.itemSlot === 'One-handed'
+		|| card.itemSlot === 'Two-handed'
+		|| card.itemSlot === 'One-handed or Paired'
+		|| card.itemSlot === 'One-handed or Two-handed')">
+		<div card-modal-toggle modal-id="cardHeaderItemType">
+			<span>
+				{{card.itemType}}
+			</span>
+			<span ng-if="!card.itemType">
+				[Item Type]
+			</span>
+		</div>
+	</div>
+	
+	<div ng-if="card.cardType === 'Aspect'">
+		<div card-modal-toggle modal-id="cardHeaderAspectType">
+			<span>
+				{{card.aspectType}}
+			</span>
+			<span ng-if="!card.aspectType">
+				[Aspect Type]
+			</span>
+		</div>
+	</div>
+	
+</div>

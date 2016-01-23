@@ -1,0 +1,50 @@
+
+.card-modal {
+	z-index: 6000;
+	position: fixed;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	border-radius: .5em;
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
+	border-right: 2px solid #111;
+	border-bottom: 2px solid #111;
+	background-color: lightGrey;
+}
+
+.modal-overlay {
+	z-index: 5000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	opacity: .25;
+	background-color: black;
+}
+
+.card-modal {
+	white-space: normal;
+	padding: .25em;
+}
+
+.card-modal ul {
+	list-style-type: none;
+	display: inline-block;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.card-modal li {
+	margin: 0 !important;
+	padding: .15em !important;
+	white-space: nowrap;
+}
+
+.card-modal label {
+	cursor: pointer;
+}
+
+.card-modal label:hover {
+	text-shadow: 0.5px 0.5px #555;
+}

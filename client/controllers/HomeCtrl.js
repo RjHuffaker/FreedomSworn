@@ -1,8 +1,6 @@
 angular.module("freedomsworn")
-	.controller("HomeCtrl", ['$scope', '$meteor', '$stateParams', '$location', 'Bakery', 'OtherBakery',
-		function($scope, $meteor, $stateParams, $location, Bakery, OtherBakery){
-			
-			$scope.Bakery = Bakery;
+	.controller("HomeCtrl", ['$scope', '$meteor', '$stateParams', '$location',
+		function($scope, $meteor, $stateParams, $location){
 			
 			$scope.deckType = $stateParams.deckType;
 			

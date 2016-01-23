@@ -1,35 +1,43 @@
 paths = {
 	views: 'client/views/',
-	deck: {
-		views: 'client/deck/views/',
-		panel: {
-			views: 'client/deck/panel/views/'
-		}
+	actionModule: {
+		views: 'client/actionModule/views/'
 	},
-	featureDeck: {
-		views: 'client/featureDeck/views/',
-		actionPartial: {
-			views: 'client/featureDeck/actionPartial/views/'
-		},
-		generalPartial: {
-			views: 'client/featureDeck/generalPartial/views/'
-		},
-		layoutPartial: {
-			views: 'client/featureDeck/layoutPartial/views/'
-		}
+	cardModalModule: {
+		views: 'client/cardModalModule/views/'
 	},
-	pcDeck: {
-		views: 'client/pcDeck/views/',
-		dicePartial: {
-			views: 'client/pcDeck/dicePartial/views/'
-		}
+	cardModule: {
+		views: 'client/cardModule/views/'
 	},
-	
-	npcDeck: {
-		views: 'client/npcDeck/views/',
-		originPartial: {
-			views: 'client/npcDeck/originPartial/views/'
-		}
+	deckModule: {
+		views: 'client/deckModule/views/'
+	},
+	diceModule: {
+		views: 'client/diceModule/views/'
+	},
+	featureModule: {
+		views: 'client/featureModule/views/'
+	},
+	generalModule: {
+		views: 'client/generalModule/views/'
+	},
+	layoutModule: {
+		views: 'client/layoutModule/views/'
+	},
+	modalBoxModule: {
+		views: 'client/modalBoxModule/views/'
+	},
+	panelModule: {
+		views: 'client/panelModule/views/'
+	},
+	pcModule: {
+		views: 'client/pcModule/views/'
+	},
+	npcModule: {
+		views: 'client/npcModule/views/'
+	},
+	originModule: {
+		views: 'client/originModule/views/'
 	},
 	diceImage: 'img/dice/'
 };

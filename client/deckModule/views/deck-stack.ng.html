@@ -1,0 +1,20 @@
+<div class="modal-overlay" ng-click="CoreVars.modalBox = '';" ng-show="CoreVars.modalBox"></div>
+
+<div class="modal-overlay" ng-click="CoreVars.currentModal = '';" ng-show="CoreVars.currentModal"></div>
+
+<div modal-box ng-show="CoreVars.modalBox"></div>
+
+<div card-modal ng-show="CoreVars.currentModal"
+	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
+		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}"></div>
+
+<div ng-mouseleave="true">
+	<ul>
+		<li card-panel ng-repeat="panel in breadSrvc.deck.cardList track by $index"
+			panel="panel" deck="breadSrvc.deck"
+			ng-class="{'dragging': panel.dragging}"
+			ng-style="{'z-index': panel.z_coord, 'height': panel.y_dim+'em', 'width': panel.x_dim+'em'}"
+			ng-mousemove="true" ng-click="true">
+		</li>
+	</ul>
+</div>
