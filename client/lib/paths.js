@@ -1,7 +1,13 @@
 paths = {
 	views: 'client/views/',
-	actionModule: {
-		views: 'client/actionModule/views/'
+	cardEntryModule: {
+		views: 'client/cardEntryModule/views/'
+	},
+	cardFooterModule: {
+		views: 'client/cardFooterModule/views/'
+	},
+	cardHeaderModule: {
+		views: 'client/cardHeaderModule/views/'
 	},
 	cardModalModule: {
 		views: 'client/cardModalModule/views/'
@@ -20,9 +26,6 @@ paths = {
 	},
 	generalModule: {
 		views: 'client/generalModule/views/'
-	},
-	layoutModule: {
-		views: 'client/layoutModule/views/'
 	},
 	modalBoxModule: {
 		views: 'client/modalBoxModule/views/'

@@ -47,9 +47,9 @@ angular.module('freedomsworn')
 						var modal_id = attrs.modalId;
 						var modal_card = scope.card;
 						
-						var modal_x_align = Boolean(attrs.modalxalign);
-						var modal_y_align = Boolean(attrs.modalyalign) || toggle_y_coord*2 < $window.innerHeight;
-						var modal_x_dim = convertEm(attrs.modalxdim) || toggle_x_dim;
+						var modal_x_align = attrs.modalxalign;
+						var modal_y_align = attrs.modalyalign || toggle_y_coord*2 < $window.innerHeight ? 'bottom' : 'top';
+						var modal_x_dim = convertEm(attrs.modalxdim);
 						var modal_y_dim = convertEm(attrs.modalydim);
 						
 						return {

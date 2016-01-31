@@ -10,22 +10,22 @@
 		<ul class="col-xs-5 text-8">
 			<li role="presentation" class="dropdown-header">Action Usage</li>
 			<li><label>
-				<input type="radio" ng-model="cardAction.usage" value="Defense"> Defense
+				<input type="radio" ng-model="cardEntry.usage" value="Defense"> Defense
 			</label></li>
 			<li><label>
-				<input type="radio" ng-model="cardAction.usage" value="Default"> Default
+				<input type="radio" ng-model="cardEntry.usage" value="Default"> Default
 			</label></li>
 			<li><label>
-				<input type="radio" ng-model="cardAction.usage" value="Single-use"> Single-use
+				<input type="radio" ng-model="cardEntry.usage" value="Single-use"> Single-use
 			</label></li>
 		</ul>
 		<ul class="col-xs-7 text-8">
 			<li role="presentation" class="dropdown-header">Action Entries</li>
-			<li ng-show="cardAction.usage !== 'Defense'"><label>
-				<input type="checkbox" ng-model="cardAction.effect.show"> Effect
+			<li ng-show="cardEntry.usage !== 'Defense'"><label>
+				<input type="checkbox" ng-model="cardEntry.effect.show"> Effect
 			</label></li>
-			<li ng-show="cardAction.usage !== 'Defense'"><label>
-				<input type="checkbox" ng-model="cardAction.attack.show"> Attack
+			<li ng-show="cardEntry.usage !== 'Defense'"><label>
+				<input type="checkbox" ng-model="cardEntry.attack.show"> Attack
 			</label></li>
 		</ul>
 	</div>

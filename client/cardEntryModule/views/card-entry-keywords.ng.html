@@ -1,15 +1,15 @@
-<div class="title-row text-8" ng-if="cardAction.usage !== 'Defense'">
+<div class="title-row text-8" ng-if="cardEntry.usage !== 'Defense'">
 	<div class="title-block">
 		<strong class="pull-left">
-			{{cardAction.usage}}<span ng-if="cardAction.attack.show && cardAction.attack.attackType">, {{cardAction.attack.attackType}}</span><span ng-if="cardAction.reflexive && cardAction.attack.attackType === 'Melee'">, Reflexive</span><span ng-if="cardAction.thrown && cardAction.attack.attackType === 'Ranged'">, Thrown</span>
+			{{cardEntry.usage}}<span ng-if="cardEntry.attack.show && cardEntry.attack.attackType">, {{cardEntry.attack.attackType}}</span><span ng-if="cardEntry.reflexive && cardEntry.attack.attackType === 'Melee'">, Reflexive</span><span ng-if="cardEntry.thrown && cardEntry.attack.attackType === 'Ranged'">, Thrown</span>
 		</strong>
 	</div>
 	<div class="title-block">
 		<div class="pull-right" ng-if="panel.locked">
 			<strong>
-				{{cardAction.frequency}}
+				{{cardEntry.frequency}}
 			</strong>
-			<strong ng-if="!cardAction.frequency">
+			<strong ng-if="!cardEntry.frequency">
 				[Frequency]
 			</strong>
 		</div>
@@ -17,14 +17,14 @@
 			dropdown on-toggle="toggled(open)" stop-event>
 			<a class="dropdown-toggle" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false">
-				<strong>{{cardAction.frequency}}</strong>
-				<strong ng-if="!cardAction.frequency">[Frequency]</strong>
+				<strong>{{cardEntry.frequency}}</strong>
+				<strong ng-if="!cardEntry.frequency">[Frequency]</strong>
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="cardDropdown" stop-click>
 				<li role="presentation" class="dropdown-header">Action Frequency</li>
 				<li ng-repeat="frequency in dataSrvc.actionFrequency"><label>
 					<input type="radio" value="{{frequency}}"
-						ng-model="cardAction.frequency">
+						ng-model="cardEntry.frequency">
 					{{frequency}}
 				</label></li>
 			</ul>

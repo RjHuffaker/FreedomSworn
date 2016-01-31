@@ -1,10 +1,15 @@
 <head>
+	
 	<base href="/">
+	
 </head>
-<body>
-	<div ng-app="freedomsworn" class="container-fluid" style="overflow: hidden; height: 100%">
-		<div ng-include src="'client/views/navbar.ng.html'"></div>
-		
-		<div ui-view style="overflow: hidden; height: 100%"></div>
-	</div>
+
+<body ng-app="freedomsworn">
+	
+	<div ng-include src="'client/views/navbar.ng.html'" 
+		style="position: fixed; top: 0; height: 7.5%; width: 100%;"></div>
+	
+	<div ui-view
+		style="position: fixed; top: 7.5%; height: 92.5%; width: 100%; overflow: auto;"></div>
+	
 </body>

@@ -88,7 +88,8 @@ angular.module('freedomsworn')
 						y_dim: 21,
 						cardData: {
 							name: 'Panel '+i,
-							cardType: cardType
+							cardType: cardType,
+							entries: [{}]
 						}
 					});
 				}

@@ -14,6 +14,10 @@ angular.module('freedomsworn')
 					
 					var modal = {};
 					
+					var cardModalToggleHandler = null;
+					var modalHeightHandler = null;
+					var modalWidthHandler = null;
+					
 					var initialize = function(){
 						// prevent native drag
 						element.attr('draggable', 'false');
@@ -21,25 +25,44 @@ angular.module('freedomsworn')
 					};
 					
 					var toggleListeners = function(enable){
-						if (!enable)return;
-						scope.$on('$destroy', onDestroy);
-						scope.$on('cardModalToggle:onPress', setDimensions);
-						scope.$watch(getModalHeight, function(newVal, oldVal){
-							if(modal.modal_y_align){
-								scope.modal_y_coord = modal.toggle_y_coord + modal.toggle_y_dim;
-							} else {
-								scope.modal_y_coord = modal.toggle_y_coord - newVal;
-							}
-						});
-						scope.$watch(getModalWidth, function(newVal, oldVal){
-							if(modal.modal_x_align==='left'){
-								scope.modal_x_coord = modal.toggle_x_coord;
-							} else if(modal.modal_x_align==='right'){
-								scope.modal_x_coord = modal.toggle_x_coord + (modal.toggle_x_dim - modal.modal_x_dim);
-							} else {
-								scope.modal_x_coord = modal.toggle_x_coord;
-							}
-						});
+						if(enable){
+							scope.$on('$destroy', onDestroy);
+							
+							cardModalToggleHandler = scope.$on('cardModalToggle:onPress', setDimensions);
+							
+							modalHeightHandler = scope.$watch(getModalHeight, function(newVal, oldVal){
+								if(!newVal) return;
+								switch(modal.modal_y_align){
+									case "bottom":
+										scope.modal_y_coord = modal.toggle_y_coord + modal.toggle_y_dim;
+										break;
+									case "top":
+										scope.modal_y_coord = modal.toggle_y_coord - newVal;
+										break;
+									}
+							});
+							
+							modalWidthHandler = scope.$watch(getModalWidth, function(newVal, oldVal){
+								if(!newVal) return;
+								switch(modal.modal_x_align){
+									case "left":
+										scope.modal_x_coord = modal.toggle_x_coord;
+										break;
+									case "right":
+										scope.modal_x_coord = modal.toggle_x_coord + (modal.toggle_x_dim - newVal);
+										break;
+									case "both":
+										scope.modal_x_coord = modal.toggle_x_coord;
+										scope.modal_x_dim = modal.toggle_x_dim;
+										break;
+								}
+							});
+							
+						} else {
+							cardModalToggleHandler();
+							modalHeightHandler();
+							modalWidthHandler();
+						}
 					};
 					
 					var onDestroy = function(enable){

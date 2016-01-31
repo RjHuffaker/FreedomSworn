@@ -2,9 +2,6 @@
 	<table class="fill-parent" fit-content>
 		<tbody>
 			<tr>
-				<td style="vertical-align: top; width: 1px;">
-					<div card-logo></div>
-				</td>
 				<td style="vertical-align: top;">
 					<div card-header></div>
 				</td>
@@ -35,7 +32,7 @@
 							body-text="card.benefit.criticalSuccess.content"></div>
 						<br />
 					</div>
-					<div ng-if="false" ng-repeat="action in card.actions" card-action="action" panel="panel"></div>
+					<div ng-repeat="entry in card.entries" card-entry="entry" panel="panel"></div>
 					<div card-footer></div>
 				 </td>
 			</tr>
