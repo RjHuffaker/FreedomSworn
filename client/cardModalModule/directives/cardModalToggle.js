@@ -6,6 +6,10 @@ angular.module('freedomsworn')
 		function($parse, $rootScope, $window, CoreVars){
 			return {
 				restrict: 'A',
+				scope: {
+					callback: '&modalCallback',
+					card: '='
+				},
 				link: function(scope, element, attrs) {
 					
 					var _pressEvents = 'touchstart mousedown';
@@ -69,9 +73,12 @@ angular.module('freedomsworn')
 					var onPress = function(event){
 						$rootScope.$broadcast('cardModalToggle:onPress', getModal());
 						
+						console.log(scope.panel);
 						
 						CoreVars.currentModal = getModal();
-						//console.log(CoreVars.currentModal);
+						
+						scope.callback();
+						
 						event.stopPropagation();
 					};
 					

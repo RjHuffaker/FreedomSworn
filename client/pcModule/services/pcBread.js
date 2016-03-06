@@ -23,10 +23,8 @@ angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$lo
 			}
 		};
 		
-		service.edit = function(pcDeck){
-			if(pcDeck){
-				pcDeck.save();
-			} else if(service.deck._id){
+		service.edit = function(){
+			if(service.deck._id){
 				service.deck.save();
 			} else if($rootScope.currentUser){
 				service.deck.owner = $rootScope.currentUser._id;

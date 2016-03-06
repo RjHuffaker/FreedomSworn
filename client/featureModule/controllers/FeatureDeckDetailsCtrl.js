@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
-	.controller("FeatureDeckDetailsCtrl", ['$scope', '$meteor', '$stateParams', '$location', 'CoreVars', 'dataSrvc', 'featureBread', 'PanelUtils', 'DeckUtils',
-		function($scope, $meteor, $stateParams, $location, CoreVars, dataSrvc, featureBread, PanelUtils, DeckUtils){
+	.controller("FeatureDeckDetailsCtrl", ['$scope', '$meteor', '$stateParams', '$location', 'CoreVars', 'dataSrvc', 'featureBread',
+		function($scope, $meteor, $stateParams, $location, CoreVars, dataSrvc, featureBread){
 			
 			$scope.CoreVars = CoreVars;
 			
@@ -10,8 +10,4 @@ angular.module("freedomsworn")
 			
 			$scope.featureBread = featureBread;
 			
-			
-			$scope.toggled = function(){
-				console.log('toggled');
-			};
 		}]);

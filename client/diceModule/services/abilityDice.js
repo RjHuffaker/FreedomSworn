@@ -2,35 +2,43 @@
 
 angular.module('freedomsworn')
 	.factory('abilityDice', ['$rootScope', 'CoreVars', function($rootScope, CoreVars) {
+		
 		var service = {};
 		
-		service.chosenAbility = {};
-		var chosenDie = {};
-		var previousDie = {};
+		var chosenAbility = { order: 0 };
 		
+		var chosenDie = { order: 0 };
+		
+		var previousDie = { order: 0 };
 		
 		service.chooseAbility = function(ability){
 			
-			CoreVars.modalBox = 'abilityDice';
-			service.chosenAbility = ability;
+			chosenAbility = ability;
+			
 		};
 		
 		service.chooseDie = function(pcDeck, order){
 			
-      CoreVars.modalBox = '';
+      CoreVars.currentModal = '';
       
       chosenDie = pcDeck.dicepool[order];
       
-      previousDie = service.chosenAbility.dice;
+      previousDie = chosenAbility.dice;
       
       pcDeck.dicepool[order] = pcDeck.dicepool[0];
       
       if(previousDie.order > 0){
+      	
           pcDeck.dicepool[previousDie.order] = previousDie;
+          
       }
       
-      pcDeck.abilities[service.chosenAbility.order].dice = chosenDie;
+      pcDeck.abilities[chosenAbility.order].dice = chosenDie;
+      
+      $rootScope.$broadcast('abilityDice:chooseDie', chosenAbility.order);
+      
 		};
 		
 		return service;
+		
 	}]);

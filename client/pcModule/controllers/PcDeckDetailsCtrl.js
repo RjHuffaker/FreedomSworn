@@ -10,30 +10,29 @@ angular.module("freedomsworn")
 			
 			$scope.pcBread.read($stateParams.pcDeckId);
 			
-			$rootScope.$on('abilityDice:chooseDie',
-				function(event, ability){
-					switch(ability){
-						case 0:
-						case 1:
-							factorDefenses.factorBlock(pcBread.deck);
-							factorStats.factorHealth(pcBread.deck);
-							factorStats.factorStamina(pcBread.deck);
-							factorStats.factorCarryingCapacity(pcBread.deck);
-							break;
-						case 2:
-						case 3:
-							factorDefenses.factorDodge(pcBread.deck);
-							break;
-						case 4:
-						case 5:
-							factorDefenses.factorAlertness(pcBread.deck);
-							break;
-						case 6:
-						case 7:
-							factorDefenses.factorTenacity(pcBread.deck);
-							break;
-					}
-				});
+			$rootScope.$on('abilityDice:chooseDie', function(event, ability){
+				switch(ability){
+					case 0:
+					case 1:
+						factorDefenses.factorBlock(pcBread.deck);
+						factorStats.factorHealth(pcBread.deck);
+						factorStats.factorStamina(pcBread.deck);
+						factorStats.factorCarryingCapacity(pcBread.deck);
+						break;
+					case 2:
+					case 3:
+						factorDefenses.factorDodge(pcBread.deck);
+						break;
+					case 4:
+					case 5:
+						factorDefenses.factorAlertness(pcBread.deck);
+						break;
+					case 6:
+					case 7:
+						factorDefenses.factorTenacity(pcBread.deck);
+						break;
+				}
+			});
 			
 			$scope.$watch('CoreVars.EXP', function(newVal, oldVal){
 				if(newVal !== oldVal){

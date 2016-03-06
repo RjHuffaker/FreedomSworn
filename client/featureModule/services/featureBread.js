@@ -1,39 +1,36 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.factory('featureBread', ['$rootScope', '$meteor', '$location', 'CoreVars', 'featureDefault', 'DeckUtils',
-		function($rootScope, $meteor, $location, CoreVars, featureDefault, DeckUtils){
+	.factory('featureBread', ['$rootScope', '$meteor', '$location', 'CoreVars', 'newFeatureDeck', 'DeckUtils',
+		function($rootScope, $meteor, $location, CoreVars, newFeatureDeck, DeckUtils){
 			
-			// var featureDeckList = $meteor.collection(FeatureDecks, true).subscribe('featureDecks', {});
+			var featureDeckList = $meteor.collection(FeatureDecks, true).subscribe('featureDecks');
 			
 			var service = {
-				deck: {},
+				deck: { cardList: [] },
+				newDeck: { 
+					panelType: 'featureSummary',
+					x_dim: 15,
+					y_dim: 21,
+					above: {},
+					below: {},
+					left: {},
+					right: {},
+					deckType: 'Aspect',
+					deckSize: 0,
+					cardList: []
+				},
 				aspects: {}
 			};
 			
 			service.browse = function(){
-				
-				var _deck = { deckType: 'deckList' };
-				
-				_deck.cardList = $meteor.collection(FeatureDecks, false).subscribe('featureDecks', {});
-				_deck.deckSize = _deck.cardList.length;
-				
-				DeckUtils.setCardList(_deck.cardList);
-				
-				service.deck = _deck;
-				
-				console.log(service.deck);
-			};
-			
-			service.browseReturn = function(params){
-				var _deck = { deckType: 'deckList' };
-				
-				_deck.cardList = $meteor.collection(FeatureDecks, true).subscribe('featureDecks', params);
-				_deck.deckSize = _deck.cardList.length;
-				
-				DeckUtils.setCardList(_deck.cardList);
-				
-				return _deck;
+				service.deck = {
+					deckType: 'deckList',
+					cardList: []
+				};
+				service.deck.cardList = featureDeckList;
+				service.deck.deckSize = featureDeckList.length;
+				DeckUtils.setCardList(service.deck.cardList);
 			};
 			
 			service.read = function(featureDeckId){
@@ -41,74 +38,58 @@ angular.module('freedomsworn')
 			};
 			
 			service.edit = function(){
-				service.deck.save();
+				if(service.deck._id){
+					service.deck.save();
+				} else if($rootScope.currentUser){
+					service.deck.owner = $rootScope.currentUser._id;
+					featureDeckList.push(service.deck);
+				}
 			};
 			
-			service.add = function(deckName, cardType, deckSize){
+			service.add = function(){
 				
-				var _deckList = $meteor.collection(FeatureDecks, true);
+				service.newDeck._id = new Meteor.Collection.ObjectID().toString();
+				service.newDeck.panelType = 'featureSummary';
+				service.newDeck.x_dim = 15;
+				service.newDeck.y_dim = 21;
+				service.newDeck.cardList = [];
+				service.newDeck.owner = $rootScope.currentUser._id;
 				
-				var _deck = {
-					_id: new Meteor.Collection.ObjectID().toString(),
-					owner: $rootScope.currentUser._id,
-					created: Date.now(),
-					name: deckName,
-					panelType: 'featureSummary',
-					deckType: cardType,
-					deckSize: deckSize,
-					above: {
-						adjacent: null,
-						overlap: null
-					},
-					below: {
-						adjacent: null,
-						overlap: null
-					},
-					left: {
-						adjacent: null,
-						overlap: null
-					},
-					right: {
-						adjacent: null,
-						overlap: null
-					},
-					x_coord: 0,
-					y_coord: 0,
-					x_dim: 15,
-					y_dim: 21,
-					cardList: []
-				};
-				
-				for(var i = 0; i < deckSize; i++){
-					_deck.cardList.push({
+				for(var i = 0; i < service.newDeck.deckSize; i++){
+					service.newDeck.cardList.push({
 						_id: new Meteor.Collection.ObjectID().toString(),
-						deckId: _deck._id,
 						panelType: 'featureCard',
 						x_dim: 15,
 						y_dim: 21,
 						cardData: {
 							name: 'Panel '+i,
-							cardType: cardType,
-							entries: [{}]
+							cardType: service.newDeck.deckType,
+							entries: []
 						}
 					});
 				}
 				
-				DeckUtils.setCardList(_deck.cardList);
+				DeckUtils.setCardList(service.newDeck.cardList);
 				
-				_deckList.push(_deck);
+				DeckUtils.addToFront(service.deck, service.newDeck);
 				
-				CoreVars.modalBox = '';
-				
-				$location.path('/featureDecks/'+_deck._id.toString());
+				service.newDeck = { 
+					panelType: 'featureSummary',
+					x_dim: 15,
+					y_dim: 21,
+					above: {},
+					below: {},
+					left: {},
+					right: {},
+					deckType: 'Aspect',
+					deckSize: 0,
+					cardList: []
+				};
 				
 			};
 			
 			service.delete = function(featureDeck){
-				var _deckList = $meteor.collection(FeatureDecks, true);
-				
-				_deckList.splice(_deckList.indexOf(featureDeck), 1);
-				service.deck.deckSize = _deckList.length;
+				DeckUtils.removeFromDeck(service.deck, featureDeck);
 			};
 			
 			return service;

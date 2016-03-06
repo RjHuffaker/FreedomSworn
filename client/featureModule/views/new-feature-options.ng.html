@@ -2,13 +2,13 @@
 	New Feature Deck
 	<div>
 		<h4>Name</h4>
-		<input ng-model="newDeck.name">
+		<input ng-model="deck.name">
 	</div>
 	
 	<div>
 		<h4>Deck Size</h4>
 		<div numpicker
-			numvalue="newDeck.deckSize"
+			numvalue="deck.deckSize"
 			numvaluemin="0"
 			numvaluemax="64"
 			numdelay="200"></div>
@@ -19,19 +19,19 @@
 		<button class="btn btn-default dropdown-toggle form-control"
 			type="button" data-toggle="dropdown"
 			aria-haspopup="true" aria-expanded="false">
-			{{newDeck.cardType}}
+			{{deck.deckType}}
 			<span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu" style="width: 100%; max-height: 1000%; overflow: auto">
-			<li ng-repeat="cardType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
-				<a href="" ng-click="setCardType(cardType)">
-				{{cardType}}
+			<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
+				<a href="" ng-click="deck.deckType = deckType;">
+				{{deckType}}
 				</a>
 			</li>
 		</ul>
 	</div>
 	<div>
-		<button ng-click="addNewDeck(newDeck);">Create Deck</button>
+		<button ng-click="addNewDeck();">Create Deck</button>
 	</div>
 	
 </div>

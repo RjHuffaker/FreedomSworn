@@ -8,7 +8,6 @@ angular.module('freedomsworn')
 			},
 			link: function(scope, element, attrs){
 				scope.dataSrvc = dataSrvc;
-				console.log(scope.cardEntry);
 			}
 		};
 	}])

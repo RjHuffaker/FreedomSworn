@@ -1,13 +1,3 @@
-<div class="modal-overlay" ng-click="CoreVars.modalBox = '';" ng-show="CoreVars.modalBox"></div>
-
-<div class="modal-overlay" ng-click="CoreVars.currentModal = '';" ng-show="CoreVars.currentModal"></div>
-
-<div modal-box ng-show="CoreVars.modalBox"></div>
-
-<div card-modal ng-show="CoreVars.currentModal"
-	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
-		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}"></div>
-
 <div ng-mouseleave="true">
 	<ul>
 		<li card-panel ng-repeat="panel in breadSrvc.deck.cardList track by $index"

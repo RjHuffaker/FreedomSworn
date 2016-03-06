@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.factory('featureDefault', [
+	.factory('newFeatureDeck', [
 		function(){
 			return {
 				name: 'Feature Deck',
 				panelType: 'featureSummary',
-				deckType: 'feature',
-				deckSize: 0,
+				deckType: 'Aspect',
+				deckSize: 8,
 				above: {
 					adjacent: null,
 					overlap: null
