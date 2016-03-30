@@ -1,7 +1,7 @@
 <hr class="black-line">
 <div class="title-row">
 	<div ng-if="card.cardType !== 'Item'">
-		<div card-modal-toggle modal-id="cardFooterPrerequisites" modalxalign="right">
+		<div card-modal-toggle modal-id="cardFooterPrerequisites" modal-card="card" modalxalign="left">
 			<strong>
 				{{card.keyword}} {{card.prerequisite}}
 			</strong>
@@ -12,7 +12,7 @@
 	</div>
 	
 	<div ng-if="card.cardType === 'Item'" class="title-block">
-		<div card-modal-toggle modal-id="cardFooterItemSlot" modalxalign="left">
+		<div card-modal-toggle modal-id="cardFooterItemSlot" modal-card="card" modalxalign="left">
 			<strong class="pull-left">
 				{{card.itemSlot}}
 			</strong>

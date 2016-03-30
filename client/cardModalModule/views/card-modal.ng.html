@@ -1,25 +1,9 @@
-<div class="modal-overlay" ng-click="CoreVars.currentModal = '';" ng-show="CoreVars.currentModal"></div>
+<div class="modal-overlay" ng-click="modalSrvc.current.show = !modalSrvc.current.show;" ng-show="modalSrvc.current.show"></div>
 
-<div class="card-modal" ng-switch on="CoreVars.currentModal.modal_id"
+<div class="card-modal" ng-show="modalSrvc.current.show"
 	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
 		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}">
 	
-	<div ng-switch-when="cardHeaderLogo" card-header-logo></div>
-	
-	<div ng-switch-when="cardHeaderName">
-		<input type="text" ng-model="card.name" class="text-10" style="width: 100%;">
-	</div>
-	
-	<div ng-switch-when="cardHeaderAspect" card-header-aspect></div>
-	
-	<div ng-switch-when="cardHeaderItemType" card-header-item-type></div>
-	
-	<div ng-switch-when="cardHeaderAspectType" card-header-aspect-type></div>
-	
-	<div ng-switch-when="cardFooterPrerequisites" card-footer-prerequisites></div>
-	
-	<div ng-switch-when="cardFooterItemSlot" card-footer-item-slot></div>
-	
-	<div ng-switch-when="diceBox" dice-box></div>
+	<div class="card-modal-slot"></div>
 	
 </div>

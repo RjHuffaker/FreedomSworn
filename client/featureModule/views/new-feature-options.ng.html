@@ -4,7 +4,7 @@
 		<h4>Name</h4>
 		<input ng-model="deck.name">
 	</div>
-	
+
 	<div>
 		<h4>Deck Size</h4>
 		<div numpicker
@@ -13,16 +13,18 @@
 			numvaluemax="64"
 			numdelay="200"></div>
 	</div>
-	
-	<div class="btn-group" role="group">
+
+	<div>
+		<button ng-click="addNewDeck();">Create Deck</button>
+	</div>
+
+	<div class="dropdown">
 		<h4>Deck Type</h4>
-		<button class="btn btn-default dropdown-toggle form-control"
-			type="button" data-toggle="dropdown"
-			aria-haspopup="true" aria-expanded="false">
+		<button class="dropdown-toggle" data-toggle="dropdown">
 			{{deck.deckType}}
 			<span class="caret"></span>
 		</button>
-		<ul class="dropdown-menu" style="width: 100%; max-height: 1000%; overflow: auto">
+		<ul class="dropdown-menu">
 			<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
 				<a href="" ng-click="deck.deckType = deckType;">
 				{{deckType}}
@@ -30,8 +32,4 @@
 			</li>
 		</ul>
 	</div>
-	<div>
-		<button ng-click="addNewDeck();">Create Deck</button>
-	</div>
-	
 </div>

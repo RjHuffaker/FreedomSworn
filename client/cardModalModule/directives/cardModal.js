@@ -1,26 +1,23 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.directive('cardModal', ['$window', 'CoreVars', 'dataSrvc',
-		function($window, CoreVars, dataSrvc){
+	.directive('cardModal', ['$window', '$compile', 'modalSrvc', 'dataSrvc',
+		function($window, $compile, modalSrvc, dataSrvc){
 			return {
 				restrict: 'A',
 				templateUrl: paths.cardModalModule.views+'card-modal.ng.html',
 				link: function(scope, element, attrs){
-					
-					scope.CoreVars = CoreVars;
+					scope.modalSrvc = modalSrvc;
 					
 					scope.dataSrvc = dataSrvc;
 					
 					var modal = {};
 					
-					var cardModalToggleHandler = null;
+					var cardModalHandler = null;
 					var modalHeightHandler = null;
 					var modalWidthHandler = null;
 					
 					var initialize = function(){
-						// prevent native drag
-						element.attr('draggable', 'false');
 						toggleListeners(true);
 					};
 					
@@ -28,38 +25,14 @@ angular.module('freedomsworn')
 						if(enable){
 							scope.$on('$destroy', onDestroy);
 							
-							cardModalToggleHandler = scope.$on('cardModalToggle:onPress', setDimensions);
+							cardModalHandler = scope.$watch('modalSrvc.current.show', setModal);
 							
-							modalHeightHandler = scope.$watch(getModalHeight, function(newVal, oldVal){
-								if(!newVal) return;
-								switch(modal.modal_y_align){
-									case "bottom":
-										scope.modal_y_coord = modal.toggle_y_coord + modal.toggle_y_dim;
-										break;
-									case "top":
-										scope.modal_y_coord = modal.toggle_y_coord - newVal;
-										break;
-									}
-							});
+							modalHeightHandler = scope.$watch(getHeight, setHeight);
 							
-							modalWidthHandler = scope.$watch(getModalWidth, function(newVal, oldVal){
-								if(!newVal) return;
-								switch(modal.modal_x_align){
-									case "left":
-										scope.modal_x_coord = modal.toggle_x_coord;
-										break;
-									case "right":
-										scope.modal_x_coord = modal.toggle_x_coord + (modal.toggle_x_dim - newVal);
-										break;
-									case "both":
-										scope.modal_x_coord = modal.toggle_x_coord;
-										scope.modal_x_dim = modal.toggle_x_dim;
-										break;
-								}
-							});
+							modalWidthHandler = scope.$watch(getWidth, setWidth);
 							
 						} else {
-							cardModalToggleHandler();
+							cardModalHandler();
 							modalHeightHandler();
 							modalWidthHandler();
 						}
@@ -79,23 +52,64 @@ angular.module('freedomsworn')
 						return value * getElementFontSize();
 					};
 					
-					var getModalHeight = function(){
+					var getHeight = function(){
 						return element[0].querySelector('.card-modal').offsetHeight;
 					};
 					
-					var getModalWidth = function(){
+					var getWidth = function(){
 						return element[0].querySelector('.card-modal').offsetWidth;
 					};
 					
-					var setDimensions = function(event, object){
-						modal = object;
-						scope.card = object.modal_card;
-						scope.modal_x_dim = object.modal_x_dim;
-						scope.modal_y_dim = object.modal_y_dim;
+					var setHeight = function(newVal, oldVal){
+						if(!newVal) return;
+						switch(modal.modal_y_align){
+							case "bottom":
+								scope.modal_y_coord = modal.toggle_y_coord + modal.toggle_y_dim;
+								break;
+							case "top":
+								scope.modal_y_coord = modal.toggle_y_coord - newVal;
+								break;
+							}
+					};
+					
+					var setWidth = function(newVal, oldVal){
+						if(!newVal) return;
+						switch(modal.modal_x_align){
+							case "left":
+								scope.modal_x_coord = modal.toggle_x_coord;
+								break;
+							case "right":
+								scope.modal_x_coord = modal.toggle_x_coord + (modal.toggle_x_dim - newVal);
+								break;
+							case "both":
+								scope.modal_x_coord = modal.toggle_x_coord;
+								scope.modal_x_dim = modal.toggle_x_dim;
+								break;
+						}
+					};
+					
+					var setModal = function(newVal, oldVal){
+						if(!modalSrvc.current.show) return;
+						modal = modalSrvc.current;
+						scope.card = modalSrvc.current.modal_card;
+						scope.modal_x_dim = modalSrvc.current.modal_x_dim;
+						scope.modal_y_dim = modalSrvc.current.modal_y_dim;
+						
+						$compile(modalSrvc.current.modal_content)(scope);
+						
+						angular.element(element[0].querySelector('.card-modal'))
+							.empty()
+							.append(modalSrvc.current.modal_content);
+						
+						angular.element(element.find('.card-modal-content')[0])
+						//element.find('.card-modal-content')
+							.removeClass('card-modal-content')
+							.addClass('card-modal-slot');
+							
 					};
 					
 					initialize();
-					
+				
 				}
 			};
 		}]);

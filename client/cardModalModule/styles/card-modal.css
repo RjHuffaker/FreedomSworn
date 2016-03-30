@@ -97,3 +97,7 @@
 	bottom: -.9em;
 	left: .6em;
 }
+
+.card-modal-content {
+	display: none;
+}

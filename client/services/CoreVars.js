@@ -35,12 +35,6 @@ angular.module('freedomsworn')
 			service.cardMoved = [];
 			var moveTimer;
 			
-			
-			service.modalBox = '';
-			service.currentModal = '';
-			service.modalDeckShown = false;
-			service.dropdownOpen = false;
-			
 			$rootScope.$on('screenSize:onHeightChange', function(event, object){
 				service.windowHeight = object.newHeight;
 			});
@@ -53,12 +47,6 @@ angular.module('freedomsworn')
 					service.cardMoving = false;
 					$rootScope.$broadcast('CoreVars:getDeckWidth');
 				}, 500);
-			};
-			
-			service.hideModal = function(){
-				service.modalShown = false;
-				service.diceBoxShown = false;
-				service.modalDeckShown = false;
 			};
 			
 			return service;

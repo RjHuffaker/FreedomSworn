@@ -1,7 +1,9 @@
 angular.module("freedomsworn")
-	.controller("NavCtrl", ['$scope', '$meteor', '$location', 'CoreVars', 'pcBread', 'featureBread',
-	function($scope, $meteor, $location, CoreVars, pcBread, featureBread){
+	.controller("NavCtrl", ['$scope', '$meteor', '$location', 'pcBread', 'featureBread', 'modalSrvc',
+	function($scope, $meteor, $location, pcBread, featureBread, modalSrvc){
 		
+    $scope.modalSrvc = modalSrvc;
+    
     $scope.error = '';
     
     $scope.checkCurrentPath = function(path){
@@ -52,10 +54,5 @@ angular.module("freedomsworn")
     $scope.editFeatureDeck = function(){
       featureBread.edit();
     };
-    
-    $scope.addFeatureDeck = function(){
-      CoreVars.modalBox = 'newFeatureDeck';
-    };
-    
     
 	}]);

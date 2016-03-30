@@ -15,7 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle"
+            data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">
             <span>PCs</span>
             <span class="caret"></span>
             <ul class="dropdown-menu">
@@ -26,14 +28,47 @@
           </a>
         </li>
         
+        <li>
+          <a href="#">
+            <div card-modal-toggle modalxalign="left">
+              <span>New Cards</span>
+              <div class="card-modal-content">
+                <ul>
+                  <li><a href="/featureDecks">Browse Feature Decks</a></li>
+                  <li ng-show="$root.currentUser">
+                    <div href="#" card-modal-toggle modalxalign="right">New Feature Deck
+                      <div class="card-modal-content">
+                        <div new-feature-options></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li ng-if="checkCurrentPath('/featureDecks/')">
+                    <a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+        
         <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle" id="featureDecks"
+            data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">
             <span>Cards</span>
             <span class="caret"></span>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" aria-labelledby="featureDecks">
               <li><a href="/featureDecks">Browse Feature Decks</a></li>
-              <li><a href=""  ng-click="addFeatureDeck()">New Feature Deck</a></li>
-              <li ng-if="checkCurrentPath('/featureDecks/')"><a href="" ng-click="editFeatureDeck()">Save Feature Deck</a></li>
+              <li ng-show="$root.currentUser">
+                <a href="#" card-modal-toggle modalxalign="right">New Feature Deck
+                  <div class="card-modal-content">
+                    <div new-feature-options></div>
+                  </div>
+                </a>
+              </li>
+              <li ng-if="checkCurrentPath('/featureDecks/')">
+                <a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
+              </li>
             </ul>
           </a>
         </li>
