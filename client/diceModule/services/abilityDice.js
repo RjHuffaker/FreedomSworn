@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.factory('abilityDice', ['$rootScope', 'CoreVars', function($rootScope, CoreVars) {
+	.factory('abilityDice', ['$rootScope', 'modalSrvc', function($rootScope, modalSrvc) {
 		
 		var service = {};
 		
@@ -19,7 +19,7 @@ angular.module('freedomsworn')
 		
 		service.chooseDie = function(pcDeck, order){
 			
-      CoreVars.currentModal = '';
+      modalSrvc.current.show = false;
       
       chosenDie = pcDeck.dicepool[order];
       

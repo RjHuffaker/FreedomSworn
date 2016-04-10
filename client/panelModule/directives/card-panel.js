@@ -38,6 +38,12 @@ angular.module('freedomsworn')
 					
 					var _pressTimer = null;
 					
+					var _cardWatcher, _deckWatcher,
+							_panelXWatcher, _panelYWatcher,
+							_heightHandler, _pressHandler,
+							_moveHandler, _releaseHander,
+							_leaveHander, _dropdownHandler;
+					
 					var initialize = function(){
 						// prevent native drag
 						element.attr('draggable', 'false');
@@ -48,28 +54,39 @@ angular.module('freedomsworn')
 					};
 					
 					var toggleListeners = function(enable){
-						// remove listeners
-						if (!enable)return;
-						
-						// add listeners
-						scope.$on('$destroy', onDestroy);
-						scope.$watch(attrs.panel, onCardChange);
-						scope.$watch(attrs.deck, onDeckChange);
-						scope.$on('screenSize:onHeightChange', onHeightChange);
-						scope.$on('cardPanel:onPressCard', onPressCard);
-						scope.$on('cardPanel:onMoveCard', onMoveCard);
-						scope.$on('cardPanel:onReleaseCard', onReleaseCard);
-						scope.$on('deckStack:onMouseLeave', onMouseLeave);
-						scope.$on('CardsCtrl:onDropdown', onDropdown);
-						scope.$watch('panel.x_coord', resetPosition);
-						scope.$watch('panel.y_coord', resetPosition);
-						element.on(_pressEvents, onPress);
-						
-						// prevent native drag for images
-						 if(! _hasTouch && element[0].nodeName.toLowerCase() === 'img'){
-							element.on('mousedown', function(){ return false;});
+						if (enable){
+							
+							// add listeners
+							scope.$on('$destroy', onDestroy);
+							_cardWatcher = scope.$watch(attrs.panel, onCardChange);
+							_deckWatcher = scope.$watch(attrs.deck, onDeckChange);
+							_heightHandler = scope.$on('screenSize:onHeightChange', onHeightChange);
+							_pressHandler = scope.$on('cardPanel:onPressCard', onPressCard);
+							_moveHandler = scope.$on('cardPanel:onMoveCard', onMoveCard);
+							_releaseHander = scope.$on('cardPanel:onReleaseCard', onReleaseCard);
+							_leaveHander = scope.$on('deckStack:onMouseLeave', onMouseLeave);
+							_dropdownHandler = scope.$on('CardsCtrl:onDropdown', onDropdown);
+							_panelXWatcher = scope.$watch('panel.x_coord', resetPosition);
+							_panelYWatcher = scope.$watch('panel.y_coord', resetPosition);
+							element.on(_pressEvents, onPress);
+							
+							// prevent native drag for images
+							 if(! _hasTouch && element[0].nodeName.toLowerCase() === 'img'){
+								element.on('mousedown', function(){ return false;});
+							}
+							
+						} else {
+							_cardWatcher();
+							_deckWatcher();
+							_heightHandler();
+							_pressHandler();
+							_moveHandler();
+							_releaseHander();
+							_leaveHander();
+							_dropdownHandler();
+							_panelXWatcher();
+							_panelYWatcher();
 						}
-						
 					};
 					
 					var onDestroy = function(enable){

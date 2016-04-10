@@ -24,11 +24,17 @@ paths = {
 	featureModule: {
 		views: 'client/featureModule/views/'
 	},
+	fsDropdown: {
+		views: 'client/fsDropdown/views/'
+	},
 	generalModule: {
 		views: 'client/generalModule/views/'
 	},
 	modalBoxModule: {
 		views: 'client/modalBoxModule/views/'
+	},
+	navBarModule: {
+		views: 'client/navBarModule/views/'
 	},
 	panelModule: {
 		views: 'client/panelModule/views/'

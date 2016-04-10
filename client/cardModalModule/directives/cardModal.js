@@ -102,7 +102,6 @@ angular.module('freedomsworn')
 							.append(modalSrvc.current.modal_content);
 						
 						angular.element(element.find('.card-modal-content')[0])
-						//element.find('.card-modal-content')
 							.removeClass('card-modal-content')
 							.addClass('card-modal-slot');
 							
